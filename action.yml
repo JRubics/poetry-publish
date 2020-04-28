@@ -1,0 +1,25 @@
+name: 'Publish python poetry package'
+author: '@JRubics'
+description: 'An action to build and publish python package to https://pypi.org/ using poetry https://github.com/sdispater/poetry'
+branding:
+  icon: 'upload-cloud'
+  color: 'gray-dark'
+inputs:
+  python_version:
+    description: 'The version of python to install'
+    required: true
+    default: 'latest'
+  poetry_version:
+    description: 'The version of poetry to install'
+    required: true
+    default: 'latest'
+  pypi_token:
+    description: 'API token to authenticate when uploading package to PyPI (https://pypi.org/manage/account/)'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.python_version }}
+    - ${{ inputs.poetry_version }}
+    - ${{ inputs.pypi_token }}
