@@ -16,6 +16,12 @@ inputs:
   pypi_token:
     description: 'API token to authenticate when uploading package to PyPI (https://pypi.org/manage/account/)'
     required: true
+  repository_name:
+    description: 'Name of a repository where we will upload the package'
+    required: false
+  repository_url:
+    description: 'URL where the package will be uploaded'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -23,3 +29,5 @@ runs:
     - ${{ inputs.python_version }}
     - ${{ inputs.poetry_version }}
     - ${{ inputs.pypi_token }}
+    - ${{ inputs.repository_name}}
+    - ${{ inputs.repository_url }}

@@ -15,6 +15,14 @@ The version of poetry to install (default: latest).
 
 **Required** API token to authenticate when uploading package to PyPI (https://pypi.org/manage/account/).
 
+### `repository_name`
+
+The name of a repository where we will upload the package. Necessary if you'd like to upload to test PyPi or a private wheels repo. Uploads to official PyPi if not informed.
+
+### `repository_url`
+
+The URL where the package will be uploaded. Necessary if you'd like to upload to test PyPi or a private wheels repo. Uploads to official PyPi if not informed.
+
 ## Example usage
 
 The following will build and publish the pyhon package using the last version of python and poetry. Specify the python package version and dependencies in `pyproject.toml` in the root directory of your project.
@@ -35,6 +43,8 @@ Python and poetry versions can be specified in inputs.
     python_version: '3.7.1'
     poetry_version: '==1.0.5'  # (PIP version specifier syntax)
     pypi_token: ${{ secrets.PYPI_TOKEN }}
+    repository_name: 'testpypi'
+    repository_url: 'https://test.pypi.org/legacy/'
 ```
 
 ## Example workflow
