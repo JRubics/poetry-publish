@@ -17,7 +17,7 @@ The version of poetry to install (default: latest).
 
 ### `repository_name`
 
-The name of a repository where we will upload the package. Necessary if you'd like to upload to test PyPi or a private wheels repo. Uploads to official PyPi if not informed.
+The name of a repository where the package will be uploaded. Necessary if you'd like to upload to test PyPi or a private wheels repo. Uploads to official PyPi if not informed.
 
 ### `repository_url`
 
