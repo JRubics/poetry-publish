@@ -19,6 +19,7 @@ poetry config pypi-token.pypi $3
 if [ -z $4 ] || [ -z $5 ]; then
   poetry publish
 else
+  poetry config pypi-token.$4 $3
   poetry config repositories.$4 $5
   poetry publish --repository $4
 fi
