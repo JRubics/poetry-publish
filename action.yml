@@ -24,7 +24,7 @@ inputs:
     required: false
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'docker://jrubics/poetry-publish:latest'
   args:
     - ${{ inputs.python_version }}
     - ${{ inputs.poetry_version }}
