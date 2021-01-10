@@ -14,6 +14,7 @@ else
   pip install poetry
 fi
 
+poetry install
 poetry build
 if [ -z $4 ] || [ -z $5 ]; then
   poetry config pypi-token.pypi $3
