@@ -15,7 +15,13 @@ else
 fi
 
 poetry install
-poetry build
+
+if [ -z $6 ]; then
+  poetry build
+else
+  poetry build --format $6
+fi
+
 if [ -z $4 ] || [ -z $5 ]; then
   poetry config pypi-token.pypi $3
   poetry publish
