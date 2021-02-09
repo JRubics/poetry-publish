@@ -16,6 +16,9 @@ inputs:
   pypi_token:
     description: 'API token to authenticate when uploading package to PyPI (https://pypi.org/manage/account/)'
     required: true
+  build_format:
+    description: 'The build format to be used, either "sdist" or "wheel"'
+    required: false
   repository_name:
     description: 'Name of a repository where we will upload the package'
     required: false
@@ -31,3 +34,4 @@ runs:
     - ${{ inputs.pypi_token }}
     - ${{ inputs.repository_name}}
     - ${{ inputs.repository_url }}
+    - ${{ inputs.build_format }}
