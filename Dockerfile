@@ -23,6 +23,7 @@ RUN apt-get update \
       wget \
       xz-utils \
       zlib1g-dev \
+      cargo \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
