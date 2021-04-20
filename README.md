@@ -34,17 +34,17 @@ The following will build and publish the pyhon package using the last version of
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1
+  uses: JRubics/poetry-publish@v1.6
   with:
     pypi_token: ${{ secrets.PYPI_TOKEN }}
 ```
 
-Python and poetry versions can be specified in inputs as well as the build format and the repository 
+Python and poetry versions can be specified in inputs as well as the build format and the repository
 to publish to.
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1
+  uses: JRubics/poetry-publish@v1.6
   with:
     python_version: '3.7.1'
     poetry_version: '==1.0.5'  # (PIP version specifier syntax)
@@ -70,7 +70,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build and publish to pypi
-      uses: JRubics/poetry-publish@v1
+      uses: JRubics/poetry-publish@v1.6
       with:
         pypi_token: ${{ secrets.PYPI_TOKEN }}
 ```
