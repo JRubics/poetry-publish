@@ -56,6 +56,7 @@ to publish to.
     build_format: 'sdist'
     repository_name: 'testpypi'
     repository_url: 'https://test.pypi.org/legacy/'
+    ignore_dev_requirements: "yes"
 ```
 
 ## Example workflow
