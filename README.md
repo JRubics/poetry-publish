@@ -28,6 +28,10 @@ The name of a repository where the package will be uploaded. Necessary if you'd 
 
 The URL where the package will be uploaded. Necessary if you'd like to upload to test PyPi or a private wheels repo. Uploads to official PyPi if not informed.
 
+### `ignore_dev_requirements`
+
+This will instruct poetry **not** to install any developer requirements. this may lead to an overall quicker experience.
+
 ## Example usage
 
 The following will build and publish the pyhon package using the last version of python and poetry. Specify the python package version and dependencies in `pyproject.toml` in the root directory of your project.
