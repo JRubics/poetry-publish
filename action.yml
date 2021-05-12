@@ -26,7 +26,7 @@ inputs:
     description: "URL where the package will be uploaded"
     required: false
   ignore_dev_requirements:
-    description: "Install without developer-requirements."
+    description: "Install project without developer requirements."
     required: false
 runs:
   using: "docker"
