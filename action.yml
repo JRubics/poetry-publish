@@ -1,33 +1,36 @@
-name: 'Publish python poetry package'
-author: '@JRubics'
-description: 'An action to build and publish python package to https://pypi.org/ using poetry https://github.com/sdispater/poetry'
+name: "Publish python poetry package"
+author: "@JRubics"
+description: "An action to build and publish python package to https://pypi.org/ using poetry https://github.com/sdispater/poetry"
 branding:
-  icon: 'upload-cloud'
-  color: 'gray-dark'
+  icon: "upload-cloud"
+  color: "gray-dark"
 inputs:
   python_version:
-    description: 'The version of python to install'
+    description: "The version of python to install"
     required: true
-    default: 'latest'
+    default: "latest"
   poetry_version:
-    description: 'The version of poetry to install'
+    description: "The version of poetry to install"
     required: true
-    default: 'latest'
+    default: "latest"
   pypi_token:
-    description: 'API token to authenticate when uploading package to PyPI (https://pypi.org/manage/account/)'
+    description: "API token to authenticate when uploading package to PyPI (https://pypi.org/manage/account/)"
     required: true
   build_format:
     description: 'The build format to be used, either "sdist" or "wheel"'
     required: false
   repository_name:
-    description: 'Name of a repository where we will upload the package'
+    description: "Name of a repository where we will upload the package"
     required: false
   repository_url:
-    description: 'URL where the package will be uploaded'
+    description: "URL where the package will be uploaded"
+    required: false
+  ignore_dev_requirements:
+    description: "Install project without developer requirements."
     required: false
 runs:
-  using: 'docker'
-  image: 'docker://jrubics/poetry-publish:v1.6'
+  using: "docker"
+  image: "docker://jrubics/poetry-publish:v1.6"
   args:
     - ${{ inputs.python_version }}
     - ${{ inputs.poetry_version }}
@@ -35,3 +38,4 @@ runs:
     - ${{ inputs.repository_name}}
     - ${{ inputs.repository_url }}
     - ${{ inputs.build_format }}
+    - ${{ inputs.ignore_dev_requirements }}

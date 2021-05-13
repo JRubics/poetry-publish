@@ -14,7 +14,11 @@ else
   pip install poetry
 fi
 
-poetry install
+if [ -z $7 ]; then
+    poetry install
+else
+  poetry install --no-dev
+fi
 
 if [ -z $6 ]; then
   poetry build
