@@ -15,7 +15,7 @@ else
 fi
 
 if [ -z $7 ]; then
-    poetry install
+  poetry install
 else
   poetry install --no-dev
 fi
