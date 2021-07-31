@@ -32,6 +32,10 @@ The URL where the package will be uploaded. Necessary if you'd like to upload to
 
 This will instruct poetry **not** to install any developer requirements. this may lead to an overall quicker experience.
 
+### `allow_poetry_pre_release`
+
+Allow poetry pre-release versions to be installed.
+
 ## Example usage
 
 The following will build and publish the pyhon package using the last version of python and poetry. Specify the python package version and dependencies in `pyproject.toml` in the root directory of your project.
