@@ -43,7 +43,7 @@ The following will build and publish the python package using the last version o
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1.7
+  uses: JRubics/poetry-publish@v1.8
   with:
     pypi_token: ${{ secrets.PYPI_TOKEN }}
 ```
@@ -53,7 +53,7 @@ to publish to.
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1.7
+  uses: JRubics/poetry-publish@v1.8
   with:
     python_version: "3.7.1"
     poetry_version: "==1.0.5" # (PIP version specifier syntax)
@@ -80,7 +80,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build and publish to pypi
-        uses: JRubics/poetry-publish@v1.7
+        uses: JRubics/poetry-publish@v1.8
         with:
           pypi_token: ${{ secrets.PYPI_TOKEN }}
 ```
