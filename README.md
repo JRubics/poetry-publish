@@ -1,5 +1,6 @@
 # poetry-publish
-An action to build and publish python package to pypi (https://pypi.org/) using poetry (https://github.com/sdispater/poetry).
+
+An action to build and publish python package to [pypi](https://pypi.org/) using [poetry](https://github.com/python-poetry/poetry).
 
 ## Inputs
 
@@ -13,7 +14,7 @@ The version of poetry to install (default: latest).
 
 ### `pypi_token`
 
-**Required** API token to authenticate when uploading package to PyPI (https://pypi.org/manage/account/).
+**Required** API token to authenticate when uploading package to PyPI (You can find your token [here](https://pypi.org/manage/account/)).
 
 ### `build_format`
 
@@ -34,11 +35,11 @@ This will instruct poetry **not** to install any developer requirements. this ma
 
 ## Example usage
 
-The following will build and publish the pyhon package using the last version of python and poetry. Specify the python package version and dependencies in `pyproject.toml` in the root directory of your project.
+The following will build and publish the python package using the last version of python and poetry. Specify the python package version and dependencies in `pyproject.toml` in the root directory of your project.
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1.6
+  uses: JRubics/poetry-publish@v1.7
   with:
     pypi_token: ${{ secrets.PYPI_TOKEN }}
 ```
@@ -48,34 +49,34 @@ to publish to.
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1.6
+  uses: JRubics/poetry-publish@v1.7
   with:
-    python_version: '3.7.1'
-    poetry_version: '==1.0.5'  # (PIP version specifier syntax)
+    python_version: "3.7.1"
+    poetry_version: "==1.0.5" # (PIP version specifier syntax)
     pypi_token: ${{ secrets.PYPI_TOKEN }}
-    build_format: 'sdist'
-    repository_name: 'testpypi'
-    repository_url: 'https://test.pypi.org/legacy/'
+    build_format: "sdist"
+    repository_name: "testpypi"
+    repository_url: "https://test.pypi.org/legacy/"
     ignore_dev_requirements: "yes"
 ```
 
 ## Example workflow
 
-The following will build and publish the pyhon package when project is tagged in the `v*.*.*` form.
+The following will build and publish the python package when project is tagged in the `v*.*.*` form.
 
 ```yaml
 name: Python package
 on:
   push:
     tags:
-      - 'v*.*.*'
+      - "v*.*.*"
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Build and publish to pypi
-      uses: JRubics/poetry-publish@v1.6
-      with:
-        pypi_token: ${{ secrets.PYPI_TOKEN }}
+      - uses: actions/checkout@v2
+      - name: Build and publish to pypi
+        uses: JRubics/poetry-publish@v1.7
+        with:
+          pypi_token: ${{ secrets.PYPI_TOKEN }}
 ```
