@@ -28,6 +28,9 @@ inputs:
   ignore_dev_requirements:
     description: "Install project without developer requirements."
     required: false
+  allow_poetry_pre_release:
+    description: "Allow usage of poetry pre-release and development versions"
+    required: false
 runs:
   using: "docker"
   image: "docker://jrubics/poetry-publish:v1.7"
@@ -39,3 +42,4 @@ runs:
     - ${{ inputs.repository_url }}
     - ${{ inputs.build_format }}
     - ${{ inputs.ignore_dev_requirements }}
+    - ${{ inputs.allow_poetry_pre_release }}

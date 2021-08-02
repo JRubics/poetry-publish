@@ -8,10 +8,16 @@ if [ $1 != 'latest' ]; then
   pyenv rehash
 fi
 
-if [ $2 != 'latest' ]; then
-  pip install poetry$2
+if [ -z $8 ]; then
+  pre=""
 else
-  pip install poetry
+  pre="--pre"
+fi
+
+if [ $2 != 'latest' ]; then
+  pip install poetry$2 $pre
+else
+  pip install poetry $pre
 fi
 
 if [ -z $7 ]; then
