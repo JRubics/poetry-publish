@@ -87,7 +87,6 @@ Repository authentication can be cahnged to http-basic authentification by speci
 - name: Build and publish to pypi
   uses: JRubics/poetry-publish@v1.8
   with:
-    pypi_token: ${{ secrets.PYPI_TOKEN }}
     repository_name: "foo"
     repository_url: "https://foo.bar/simple/"
     repository_username: "username"
