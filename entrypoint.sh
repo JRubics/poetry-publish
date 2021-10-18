@@ -41,8 +41,7 @@ else
     poetry config repositories.$4 $5
     poetry publish --repository $4
   else
-    poetry config http-basic.$4 $9 $10
     poetry config repositories.$4 $5
-    poetry publish --repository $4
+    poetry publish --repository $4 --username $9 --password $10
   fi
 fi
