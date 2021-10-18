@@ -18,7 +18,7 @@ RUN apt-get update \
       libssl-dev \
       llvm \
       make \
-      python-openssl \
+      openssl \
       tk-dev \
       wget \
       xz-utils \
