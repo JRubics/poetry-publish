@@ -1,6 +1,9 @@
 # poetry-publish
 
-An action to build and publish python package to [pypi](https://pypi.org/) using [poetry](https://github.com/python-poetry/poetry).
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/JRubics/poetry-publish/graphs/commit-activity)
+[![Latest release](https://badgen.net/github/release/JRubics/poetry-publish)](https://github.com/JRubics/poetry-publish/releases)
+
+An action to build and publish python package to [PyPI](https://pypi.org/), [TestPyPI](https://test.pypi.org/) or a private wheels repo using [poetry](https://github.com/python-poetry/poetry).
 
 ## Inputs
 
