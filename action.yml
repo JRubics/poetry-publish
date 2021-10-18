@@ -14,16 +14,22 @@ inputs:
     required: true
     default: "latest"
   pypi_token:
-    description: "API token to authenticate when uploading package to PyPI (https://pypi.org/manage/account/)"
-    required: true
-  build_format:
-    description: 'The build format to be used, either "sdist" or "wheel"'
+    description: "API token to authenticate when uploading package to PyPI (https://pypi.org/manage/account/) or TestPyPI (https://test.pypi.org/manage/account/)"
     required: false
   repository_name:
-    description: "Name of a repository where we will upload the package"
+    description: "Name of a repository where the package will be uploaded"
     required: false
   repository_url:
     description: "URL where the package will be uploaded"
+    required: false
+  repository_username:
+    description: "Username to log in into a repository where the package will be uploaded if using http-basic authentification instead of api token"
+    required: false
+  repository_password:
+    description: "Password to log in into a repository where the package will be uploaded if using http-basic authentification instead of api token"
+    required: false
+  build_format:
+    description: 'The build format to be used, either "sdist" or "wheel"'
     required: false
   ignore_dev_requirements:
     description: "Install project without developer requirements."
@@ -33,7 +39,7 @@ inputs:
     required: false
 runs:
   using: "docker"
-  image: "docker://jrubics/poetry-publish:v1.8"
+  image: "docker://jrubics/poetry-publish:v1.9"
   args:
     - ${{ inputs.python_version }}
     - ${{ inputs.poetry_version }}
@@ -43,3 +49,5 @@ runs:
     - ${{ inputs.build_format }}
     - ${{ inputs.ignore_dev_requirements }}
     - ${{ inputs.allow_poetry_pre_release }}
+    - ${{ inputs.repository_username }}
+    - ${{ inputs.repository_password }}

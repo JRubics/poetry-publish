@@ -36,7 +36,12 @@ if [ -z $4 ] || [ -z $5 ]; then
   poetry config pypi-token.pypi $3
   poetry publish
 else
-  poetry config pypi-token.$4 $3
-  poetry config repositories.$4 $5
-  poetry publish --repository $4
+  if [ -z $9 ] || [ -z ${10} ]; then
+    poetry config pypi-token.$4 $3
+    poetry config repositories.$4 $5
+    poetry publish --repository $4
+  else
+    poetry config repositories.$4 $5
+    poetry publish --repository $4 --username $9 --password ${10}
+  fi
 fi

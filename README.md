@@ -16,11 +16,6 @@ The version of poetry to install (default: latest).
 
 **Required** API token to authenticate when uploading package to PyPI (You can find your token [here](https://pypi.org/manage/account/)).
 
-### `build_format`
-
-By default, poetry's build command outputs two formats: **wheel** and **sdist**. If you intend to use
-only one of them, you may specify that with the `build_format` parameter.
-
 ### `repository_name`
 
 The name of a repository where the package will be uploaded. Necessary if you'd like to upload to test PyPi or a private wheels repo. Uploads to official PyPi if not informed.
@@ -28,6 +23,19 @@ The name of a repository where the package will be uploaded. Necessary if you'd 
 ### `repository_url`
 
 The URL where the package will be uploaded. Necessary if you'd like to upload to test PyPi or a private wheels repo. Uploads to official PyPi if not informed.
+
+### `repository_username`
+
+The Username to log in into a repository where the package will be uploaded if using http-basic authentification instead of api token.
+
+### `repository_password`
+
+The Password to log in into a repository where the package will be uploaded if using http-basic authentification instead of api token.
+
+### `build_format`
+
+By default, poetry's build command outputs two formats: **wheel** and **sdist**. If you intend to use
+only one of them, you may specify that with the `build_format` parameter.
 
 ### `ignore_dev_requirements`
 
@@ -39,7 +47,7 @@ Allow poetry pre-release versions to be installed.
 
 ## Example usage
 
-The following will build and publish the python package using the last version of python and poetry. Specify the python package version and dependencies in `pyproject.toml` in the root directory of your project.
+The following will build and publish the python package to the PyPI using the last version of python and poetry. Specify the python package version and dependencies in `pyproject.toml` in the root directory of your project.
 
 ```yaml
 - name: Build and publish to pypi
@@ -48,8 +56,7 @@ The following will build and publish the python package using the last version o
     pypi_token: ${{ secrets.PYPI_TOKEN }}
 ```
 
-Python and poetry versions can be specified in inputs as well as the build format and the repository
-to publish to.
+Python and poetry versions can be specified in inputs as well as the build_format, allow_poetry_pre_release and ignore_dev_requirements.
 
 ```yaml
 - name: Build and publish to pypi
@@ -59,11 +66,32 @@ to publish to.
     poetry_version: "==1.0.5" # (PIP version specifier syntax)
     pypi_token: ${{ secrets.PYPI_TOKEN }}
     build_format: "sdist"
-    repository_name: "testpypi"
-    repository_url: "https://test.pypi.org/legacy/"
+    allow_poetry_pre_release: "yes"
     ignore_dev_requirements: "yes"
 ```
 
+Repository can be changed to TestPyPI or a private wheels repo by specifying repository_name and repository_url.
+
+```yaml
+- name: Build and publish to pypi
+  uses: JRubics/poetry-publish@v1.8
+  with:
+    pypi_token: ${{ secrets.PYPI_TOKEN }}
+    repository_name: "testpypi"
+    repository_url: "https://test.pypi.org/legacy/"
+```
+
+Repository authentication can be cahnged to http-basic authentification by specifying repository_username and repository_password instead of pypi_token.
+
+```yaml
+- name: Build and publish to pypi
+  uses: JRubics/poetry-publish@v1.8
+  with:
+    repository_name: "foo"
+    repository_url: "https://foo.bar/simple/"
+    repository_username: "username"
+    repository_password: "password"
+```
 ## Example workflow
 
 The following will build and publish the python package when project is tagged in the `v*.*.*` form.
