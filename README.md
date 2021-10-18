@@ -81,7 +81,7 @@ Repository can be changed to TestPyPI or a private wheels repo by specifying rep
     repository_url: "https://test.pypi.org/legacy/"
 ```
 
-Repository authentication can be cahnged to http-basic authentification by specifying repository_username and repository_password.
+Repository authentication can be cahnged to http-basic authentification by specifying repository_username and repository_password instead of pypi_token.
 
 ```yaml
 - name: Build and publish to pypi
