@@ -7,11 +7,11 @@ branding:
 inputs:
   python_version:
     description: "The version of python to install"
-    required: true
+    required: false
     default: "latest"
   poetry_version:
     description: "The version of poetry to install"
-    required: true
+    required: false
     default: "latest"
   pypi_token:
     description: "API token to authenticate when uploading package to PyPI (https://pypi.org/manage/account/) or TestPyPI (https://test.pypi.org/manage/account/)"
