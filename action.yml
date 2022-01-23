@@ -1,5 +1,5 @@
-name: "Publish python poetry package - agates"
-author: "@agates"
+name: "Publish python poetry package"
+author: "@JRubics"
 description: "An action to build and publish python package to https://pypi.org/ using poetry https://github.com/sdispater/poetry"
 branding:
   icon: "upload-cloud"
@@ -42,7 +42,7 @@ inputs:
     required: false
 runs:
   using: "docker"
-  image: "docker://alecksgates/poetry-publish:v1.10"
+  image: "docker://jrubics/poetry-publish:v1.10"
   args:
     - ${{ inputs.python_version }}
     - ${{ inputs.poetry_version }}
