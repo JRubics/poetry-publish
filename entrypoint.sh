@@ -2,10 +2,10 @@
 
 set -e
 
-if [ -n $11 ]; then
+if [ -n ${11} ]; then
   apt-get update
   apt-get -y upgrade
-  apt-get -y install --no-install-recommends $11
+  apt-get -y install --no-install-recommends ${11}
 fi
 
 if [ $1 != 'latest' ]; then
