@@ -1,5 +1,5 @@
-name: "Publish python poetry package"
-author: "@JRubics"
+name: "Publish python poetry package - agates"
+author: "@agates"
 description: "An action to build and publish python package to https://pypi.org/ using poetry https://github.com/sdispater/poetry"
 branding:
   icon: "upload-cloud"
