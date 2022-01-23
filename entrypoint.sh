@@ -2,7 +2,7 @@
 
 set -e
 
-if [ -z $11 ]; then
+if [ -n $11 ]; then
   apt-get update
   apt-get -y upgrade
   apt-get -y install --no-install-recommends $11
