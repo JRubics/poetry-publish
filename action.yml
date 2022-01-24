@@ -37,9 +37,12 @@ inputs:
   allow_poetry_pre_release:
     description: "Allow usage of poetry pre-release and development versions"
     required: false
+  extra_build_dependency_packages:
+    description: "An optional space-separated list of debian packages to be installed before building the package"
+    required: false
 runs:
   using: "docker"
-  image: "docker://jrubics/poetry-publish:v1.9"
+  image: "docker://jrubics/poetry-publish:v1.10"
   args:
     - ${{ inputs.python_version }}
     - ${{ inputs.poetry_version }}
@@ -51,3 +54,4 @@ runs:
     - ${{ inputs.allow_poetry_pre_release }}
     - ${{ inputs.repository_username }}
     - ${{ inputs.repository_password }}
+    - ${{ inputs.extra_build_dependency_packages }}
