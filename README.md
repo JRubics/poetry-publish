@@ -99,6 +99,17 @@ Repository authentication can be cahnged to http-basic authentification by speci
     repository_username: "username"
     repository_password: "password"
 ```
+
+Extra debian packages can be installed before building the python package. This is particularly useful for packages that do not need to be included in the base image for this action.
+
+```yaml
+- name: Build and publish to pypi
+  uses: JRubics/poetry-publish@v1.10
+  with:
+    pypi_token: ${{ secrets.PYPI_TOKEN }}
+    extra_build_dependency_packages: "capnproto libzmq3-dev"
+```
+
 ## Example workflow
 
 The following will build and publish the python package when project is tagged in the `v*.*.*` form.
