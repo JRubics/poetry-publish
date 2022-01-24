@@ -58,7 +58,7 @@ The following will build and publish the python package to the PyPI using the la
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1.9
+  uses: JRubics/poetry-publish@v1.10
   with:
     pypi_token: ${{ secrets.PYPI_TOKEN }}
 ```
@@ -67,7 +67,7 @@ Python and poetry versions can be specified in inputs as well as the build_forma
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1.9
+  uses: JRubics/poetry-publish@v1.10
   with:
     python_version: "3.7.1"
     poetry_version: "==1.0.5" # (PIP version specifier syntax)
@@ -81,7 +81,7 @@ Repository can be changed to TestPyPI or a private wheels repo by specifying rep
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1.9
+  uses: JRubics/poetry-publish@v1.10
   with:
     pypi_token: ${{ secrets.PYPI_TOKEN }}
     repository_name: "testpypi"
@@ -92,7 +92,7 @@ Repository authentication can be cahnged to http-basic authentification by speci
 
 ```yaml
 - name: Build and publish to private Python package repository
-  uses: JRubics/poetry-publish@v1.9
+  uses: JRubics/poetry-publish@v1.10
   with:
     repository_name: "foo"
     repository_url: "https://foo.bar/simple/"
@@ -115,7 +115,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build and publish to pypi
-        uses: JRubics/poetry-publish@v1.9
+        uses: JRubics/poetry-publish@v1.10
         with:
           pypi_token: ${{ secrets.PYPI_TOKEN }}
 ```
