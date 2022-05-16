@@ -52,6 +52,11 @@ Allow poetry pre-release versions to be installed.
 
 An optional space-separated list of debian packages to be installed before building the package
 
+### `plugins`
+
+An optional space-separated list of poetry plugins to be installed before building the package
+
+
 ## Example usage
 
 The following will build and publish the python package to the PyPI using the last version of python and poetry. Specify the python package version and dependencies in `pyproject.toml` in the root directory of your project.

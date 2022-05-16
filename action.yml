@@ -40,6 +40,9 @@ inputs:
   extra_build_dependency_packages:
     description: "An optional space-separated list of debian packages to be installed before building the package"
     required: false
+  plugins:
+    description: "An optional space-separated list of poetry plugins to be installed before building the package"
+    required: false
 runs:
   using: "docker"
   image: "docker://jrubics/poetry-publish:v1.10"
@@ -55,3 +58,4 @@ runs:
     - ${{ inputs.repository_username }}
     - ${{ inputs.repository_password }}
     - ${{ inputs.extra_build_dependency_packages }}
+    - ${{ inputs.plugins }}
