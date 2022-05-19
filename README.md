@@ -63,7 +63,7 @@ The following will build and publish the python package to the PyPI using the la
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1.10
+  uses: JRubics/poetry-publish@v1.11
   with:
     pypi_token: ${{ secrets.PYPI_TOKEN }}
 ```
@@ -72,7 +72,7 @@ Python and poetry versions can be specified in inputs as well as the build_forma
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1.10
+  uses: JRubics/poetry-publish@v1.11
   with:
     python_version: "3.7.1"
     poetry_version: "==1.0.5" # (PIP version specifier syntax)
@@ -86,7 +86,7 @@ Repository can be changed to TestPyPI or a private wheels repo by specifying rep
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1.10
+  uses: JRubics/poetry-publish@v1.11
   with:
     pypi_token: ${{ secrets.PYPI_TOKEN }}
     repository_name: "testpypi"
@@ -97,7 +97,7 @@ Repository authentication can be cahnged to http-basic authentification by speci
 
 ```yaml
 - name: Build and publish to private Python package repository
-  uses: JRubics/poetry-publish@v1.10
+  uses: JRubics/poetry-publish@v1.11
   with:
     repository_name: "foo"
     repository_url: "https://foo.bar/simple/"
@@ -109,10 +109,20 @@ Extra debian packages can be installed before building the python package. This 
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1.10
+  uses: JRubics/poetry-publish@v1.11
   with:
     pypi_token: ${{ secrets.PYPI_TOKEN }}
     extra_build_dependency_packages: "capnproto libzmq3-dev"
+```
+
+Poetry plugins can be added by specifying plugins input
+
+```yaml
+- name: Build and publish to pypi
+  uses: JRubics/poetry-publish@v1.11
+  with:
+    pypi_token: ${{ secrets.PYPI_TOKEN }}
+    plugins: "poetry-dynamic-versioning-plugin"
 ```
 
 ## Example workflow
@@ -131,7 +141,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build and publish to pypi
-        uses: JRubics/poetry-publish@v1.10
+        uses: JRubics/poetry-publish@v1.11
         with:
           pypi_token: ${{ secrets.PYPI_TOKEN }}
 ```
