@@ -27,7 +27,7 @@ else
 fi
 
 if [ -n "${12}" ]; then
-  poetry plugin add ${12}
+  poetry self add ${12}
 fi
 
 if [ -z $7 ]; then
