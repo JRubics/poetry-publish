@@ -9,8 +9,8 @@ if [ -n "${11}" ]; then
 fi
 
 if [ $1 != 'latest' ]; then
-  pyenv latest install $1
-  pyenv latest global $1
+  pyenv install $1
+  pyenv global $1
   pyenv rehash
 fi
 
