@@ -2,6 +2,8 @@
 
 set -e
 
+cd ${13}
+
 if [ -n "${11}" ]; then
   apt-get update
   apt-get -y upgrade

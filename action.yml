@@ -43,9 +43,13 @@ inputs:
   plugins:
     description: "An optional space-separated list of poetry plugins to be installed before building the package"
     required: false
+  package_directory:
+    description: "An optional subdirectory path if poetry package doesn't reside in the main workflow directory"
+    required: false
+    default: "."
 runs:
   using: "docker"
-  image: "docker://jrubics/poetry-publish:v1.15"
+  image: "docker://jrubics/poetry-publish:v1.16"
   args:
     - ${{ inputs.python_version }}
     - ${{ inputs.poetry_version }}
@@ -59,3 +63,4 @@ runs:
     - ${{ inputs.repository_password }}
     - ${{ inputs.extra_build_dependency_packages }}
     - ${{ inputs.plugins }}
+    - ${{ inputs.package_directory }}
