@@ -49,7 +49,7 @@ inputs:
     default: "."
 runs:
   using: "docker"
-  image: "docker://jrubics/poetry-publish:v1.16"
+  image: "docker://jrubics/poetry-publish:v1.17"
   args:
     - ${{ inputs.python_version }}
     - ${{ inputs.poetry_version }}
