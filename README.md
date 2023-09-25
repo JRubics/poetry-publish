@@ -126,7 +126,7 @@ Poetry plugins can be added by specifying plugins input
   uses: JRubics/poetry-publish@v1.17
   with:
     pypi_token: ${{ secrets.PYPI_TOKEN }}
-    plugins: "poetry-dynamic-versioning-plugin"
+    plugins: "poetry-dynamic-versioning[plugin]"
 ```
 
 Poetry package can be built from a subdirectory. It should be specified as package_directory
