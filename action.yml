@@ -31,8 +31,8 @@ inputs:
   build_format:
     description: 'The build format to be used, either "sdist" or "wheel"'
     required: false
-  ignore_dev_requirements:
-    description: "Install project without developer requirements."
+  poetry_install_options:
+    description: 'Adds possibility to pass options to "poetry install" command'
     required: false
   allow_poetry_pre_release:
     description: "Allow usage of poetry pre-release and development versions"
@@ -57,7 +57,7 @@ runs:
     - ${{ inputs.repository_name}}
     - ${{ inputs.repository_url }}
     - ${{ inputs.build_format }}
-    - ${{ inputs.ignore_dev_requirements }}
+    - ${{ inputs.poetry_install_options }}
     - ${{ inputs.allow_poetry_pre_release }}
     - ${{ inputs.repository_username }}
     - ${{ inputs.repository_password }}

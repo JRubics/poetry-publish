@@ -32,10 +32,10 @@ if [ -n "${12}" ]; then
   poetry self add ${12}
 fi
 
-if [ -z $7 ]; then
+if [ -n "${7}" ]; then
   poetry install
 else
-  poetry install --no-dev
+  poetry install ${7}
 fi
 
 if [ -z $6 ]; then

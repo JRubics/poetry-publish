@@ -40,9 +40,14 @@ The Password to log in into a repository where the package will be uploaded if u
 By default, poetry's build command outputs two formats: **wheel** and **sdist**. If you intend to use
 only one of them, you may specify that with the `build_format` parameter.
 
-### `ignore_dev_requirements`
+### `poetry_install_options`
 
-This will instruct poetry **not** to install any developer requirements. this may lead to an overall quicker experience.
+Adds possibility to pass options to "poetry install" command. Examples:
+  - `--without dev`
+  - `--only-root`
+  - `--sync`
+
+Check the full list [here](https://python-poetry.org/docs/cli/#options-2).
 
 ### `allow_poetry_pre_release`
 
@@ -72,7 +77,7 @@ The following will build and publish the python package to the PyPI using the la
     pypi_token: ${{ secrets.PYPI_TOKEN }}
 ```
 
-Python and poetry versions can be specified in inputs as well as the build_format, allow_poetry_pre_release and ignore_dev_requirements.
+Python and poetry versions can be specified in inputs as well as the build_format, allow_poetry_pre_release and poetry_install_options.
 
 ```yaml
 - name: Build and publish to pypi
@@ -83,7 +88,7 @@ Python and poetry versions can be specified in inputs as well as the build_forma
     pypi_token: ${{ secrets.PYPI_TOKEN }}
     build_format: "sdist"
     allow_poetry_pre_release: "yes"
-    ignore_dev_requirements: "yes"
+    poetry_install_options: "--sync --no-root"
 ```
 
 Repository can be changed to TestPyPI or a private wheels repo by specifying repository_name and repository_url.
