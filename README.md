@@ -85,7 +85,7 @@ The following will build and publish the python package to the PyPI using the la
     pypi_token: ${{ secrets.PYPI_TOKEN }}
 ```
 
-Python and poetry versions can be specified in inputs as well as the build_format, allow_poetry_pre_release and poetry_install_options.
+Python and poetry versions can be specified in inputs as well as the build_format, allow_poetry_pre_release, poetry_install_options and poetry_publish_options.
 
 ```yaml
 - name: Build and publish to pypi
@@ -97,6 +97,7 @@ Python and poetry versions can be specified in inputs as well as the build_forma
     build_format: "sdist"
     allow_poetry_pre_release: "yes"
     poetry_install_options: "--sync --no-root"
+    poetry_publish_options: "--dry-run"
 ```
 
 Repository can be changed to TestPyPI or a private wheels repo by specifying repository_name and repository_url.
