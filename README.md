@@ -49,6 +49,14 @@ Adds possibility to pass options to "poetry install" command. Examples:
 
 Check the full list [here](https://python-poetry.org/docs/cli/#options-2).
 
+### `poetry_publish_options`
+
+Adds possibility to pass options to "poetry publish" command. Examples:
+  - `--dry-run`
+  - `--build`
+
+Check the full list [here](https://python-poetry.org/docs/cli/#options-8).
+
 ### `allow_poetry_pre_release`
 
 Allow poetry pre-release versions to be installed.

@@ -32,11 +32,7 @@ if [ -n "${12}" ]; then
   poetry self add ${12}
 fi
 
-if [ -n "${7}" ]; then
-  poetry install
-else
-  poetry install ${7}
-fi
+poetry install ${7}
 
 if [ -z $6 ]; then
   poetry build
@@ -46,14 +42,14 @@ fi
 
 if [ -z $4 ] || [ -z $5 ]; then
   poetry config pypi-token.pypi $3
-  poetry publish
+  poetry publish ${14}
 else
   if [ -z $9 ] || [ -z ${10} ]; then
     poetry config pypi-token.$4 $3
     poetry config repositories.$4 $5
-    poetry publish --repository $4
+    poetry publish --repository $4  ${14}
   else
     poetry config repositories.$4 $5
-    poetry publish --repository $4 --username $9 --password ${10}
+    poetry publish --repository $4 --username $9 --password ${10}  ${14}
   fi
 fi
