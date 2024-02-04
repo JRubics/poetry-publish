@@ -80,22 +80,31 @@ The following will build and publish the python package to the PyPI using the la
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1.17
+  uses: JRubics/poetry-publish@v2.0
   with:
     pypi_token: ${{ secrets.PYPI_TOKEN }}
 ```
 
-Python and poetry versions can be specified in inputs as well as the build_format, allow_poetry_pre_release, poetry_install_options and poetry_publish_options.
+Python and poetry versions can be specified in inputs as well as the build_format and allow_poetry_pre_release.
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1.17
+  uses: JRubics/poetry-publish@v2.0
   with:
     python_version: "3.7.1"
     poetry_version: "==1.0.5" # (PIP version specifier syntax)
     pypi_token: ${{ secrets.PYPI_TOKEN }}
     build_format: "sdist"
     allow_poetry_pre_release: "yes"
+```
+
+Poetry options for install and publish commands can be specified through poetry_install_options and poetry_publish_options.
+
+```yaml
+- name: Build and publish to pypi
+  uses: JRubics/poetry-publish@v2.0
+  with:
+    pypi_token: ${{ secrets.PYPI_TOKEN }}
     poetry_install_options: "--sync --no-root"
     poetry_publish_options: "--dry-run"
 ```
@@ -104,7 +113,7 @@ Repository can be changed to TestPyPI or a private wheels repo by specifying rep
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1.17
+  uses: JRubics/poetry-publish@v2.0
   with:
     pypi_token: ${{ secrets.PYPI_TOKEN }}
     repository_name: "testpypi"
@@ -115,7 +124,7 @@ Repository authentication can be changed to http-basic authentification by speci
 
 ```yaml
 - name: Build and publish to private Python package repository
-  uses: JRubics/poetry-publish@v1.17
+  uses: JRubics/poetry-publish@v2.0
   with:
     repository_name: "foo"
     repository_url: "https://foo.bar/simple/"
@@ -127,7 +136,7 @@ Extra debian packages can be installed before building the python package. This 
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1.17
+  uses: JRubics/poetry-publish@v2.0
   with:
     pypi_token: ${{ secrets.PYPI_TOKEN }}
     extra_build_dependency_packages: "capnproto libzmq3-dev"
@@ -137,7 +146,7 @@ Poetry plugins can be added by specifying plugins input
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1.17
+  uses: JRubics/poetry-publish@v2.0
   with:
     pypi_token: ${{ secrets.PYPI_TOKEN }}
     plugins: "poetry-dynamic-versioning[plugin]"
@@ -147,7 +156,7 @@ Poetry package can be built from a subdirectory. It should be specified as packa
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1.17
+  uses: JRubics/poetry-publish@v2.0
   with:
     pypi_token: ${{ secrets.PYPI_TOKEN }}
     package_directory: "subdirectory"
@@ -169,7 +178,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build and publish to pypi
-        uses: JRubics/poetry-publish@v1.17
+        uses: JRubics/poetry-publish@v2.0
         with:
           pypi_token: ${{ secrets.PYPI_TOKEN }}
 ```
