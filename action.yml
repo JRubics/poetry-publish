@@ -31,8 +31,8 @@ inputs:
   build_format:
     description: 'The build format to be used, either "sdist" or "wheel"'
     required: false
-  ignore_dev_requirements:
-    description: "Install project without developer requirements."
+  poetry_install_options:
+    description: 'Adds possibility to pass options to "poetry install" command'
     required: false
   allow_poetry_pre_release:
     description: "Allow usage of poetry pre-release and development versions"
@@ -47,9 +47,12 @@ inputs:
     description: "An optional subdirectory path if poetry package doesn't reside in the main workflow directory"
     required: false
     default: "."
+  poetry_publish_options:
+    description: 'Adds possibility to pass options to "poetry publish" command'
+    required: false
 runs:
   using: "docker"
-  image: "docker://jrubics/poetry-publish:v1.17"
+  image: "docker://jrubics/poetry-publish:v2.0"
   args:
     - ${{ inputs.python_version }}
     - ${{ inputs.poetry_version }}
@@ -57,10 +60,11 @@ runs:
     - ${{ inputs.repository_name}}
     - ${{ inputs.repository_url }}
     - ${{ inputs.build_format }}
-    - ${{ inputs.ignore_dev_requirements }}
+    - ${{ inputs.poetry_install_options }}
     - ${{ inputs.allow_poetry_pre_release }}
     - ${{ inputs.repository_username }}
     - ${{ inputs.repository_password }}
     - ${{ inputs.extra_build_dependency_packages }}
     - ${{ inputs.plugins }}
     - ${{ inputs.package_directory }}
+    - ${{ inputs.poetry_publish_options }}

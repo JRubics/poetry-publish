@@ -40,9 +40,22 @@ The Password to log in into a repository where the package will be uploaded if u
 By default, poetry's build command outputs two formats: **wheel** and **sdist**. If you intend to use
 only one of them, you may specify that with the `build_format` parameter.
 
-### `ignore_dev_requirements`
+### `poetry_install_options`
 
-This will instruct poetry **not** to install any developer requirements. this may lead to an overall quicker experience.
+Adds possibility to pass options to "poetry install" command. Examples:
+  - `--without dev`
+  - `--only-root`
+  - `--sync`
+
+Check the full list [here](https://python-poetry.org/docs/cli/#options-2).
+
+### `poetry_publish_options`
+
+Adds possibility to pass options to "poetry publish" command. Examples:
+  - `--dry-run`
+  - `--build`
+
+Check the full list [here](https://python-poetry.org/docs/cli/#options-8).
 
 ### `allow_poetry_pre_release`
 
@@ -61,36 +74,48 @@ An optional space-separated list of poetry plugins to be installed before buildi
 An optional subdirectory path if poetry package doesn't reside in the main workflow directory
 
 
+**Note:** `ignore_dev_requirements` command is deprecated in version 2.0. Use `poetry_install_options: --without dev` instead
+
 ## Example usage
 
 The following will build and publish the python package to the PyPI using the last version of python and poetry. Specify the python package version and dependencies in `pyproject.toml` in the root directory of your project.
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1.17
+  uses: JRubics/poetry-publish@v2.0
   with:
     pypi_token: ${{ secrets.PYPI_TOKEN }}
 ```
 
-Python and poetry versions can be specified in inputs as well as the build_format, allow_poetry_pre_release and ignore_dev_requirements.
+Python and poetry versions can be specified in inputs as well as the build_format and allow_poetry_pre_release.
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1.17
+  uses: JRubics/poetry-publish@v2.0
   with:
     python_version: "3.7.1"
     poetry_version: "==1.0.5" # (PIP version specifier syntax)
     pypi_token: ${{ secrets.PYPI_TOKEN }}
     build_format: "sdist"
     allow_poetry_pre_release: "yes"
-    ignore_dev_requirements: "yes"
+```
+
+Poetry options for install and publish commands can be specified through poetry_install_options and poetry_publish_options.
+
+```yaml
+- name: Build and publish to pypi
+  uses: JRubics/poetry-publish@v2.0
+  with:
+    pypi_token: ${{ secrets.PYPI_TOKEN }}
+    poetry_install_options: "--sync --no-root"
+    poetry_publish_options: "--dry-run"
 ```
 
 Repository can be changed to TestPyPI or a private wheels repo by specifying repository_name and repository_url.
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1.17
+  uses: JRubics/poetry-publish@v2.0
   with:
     pypi_token: ${{ secrets.PYPI_TOKEN }}
     repository_name: "testpypi"
@@ -101,7 +126,7 @@ Repository authentication can be changed to http-basic authentification by speci
 
 ```yaml
 - name: Build and publish to private Python package repository
-  uses: JRubics/poetry-publish@v1.17
+  uses: JRubics/poetry-publish@v2.0
   with:
     repository_name: "foo"
     repository_url: "https://foo.bar/simple/"
@@ -113,7 +138,7 @@ Extra debian packages can be installed before building the python package. This 
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1.17
+  uses: JRubics/poetry-publish@v2.0
   with:
     pypi_token: ${{ secrets.PYPI_TOKEN }}
     extra_build_dependency_packages: "capnproto libzmq3-dev"
@@ -123,7 +148,7 @@ Poetry plugins can be added by specifying plugins input
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1.17
+  uses: JRubics/poetry-publish@v2.0
   with:
     pypi_token: ${{ secrets.PYPI_TOKEN }}
     plugins: "poetry-dynamic-versioning[plugin]"
@@ -133,7 +158,7 @@ Poetry package can be built from a subdirectory. It should be specified as packa
 
 ```yaml
 - name: Build and publish to pypi
-  uses: JRubics/poetry-publish@v1.17
+  uses: JRubics/poetry-publish@v2.0
   with:
     pypi_token: ${{ secrets.PYPI_TOKEN }}
     package_directory: "subdirectory"
@@ -155,7 +180,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build and publish to pypi
-        uses: JRubics/poetry-publish@v1.17
+        uses: JRubics/poetry-publish@v2.0
         with:
           pypi_token: ${{ secrets.PYPI_TOKEN }}
 ```
