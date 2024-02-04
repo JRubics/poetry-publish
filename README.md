@@ -74,6 +74,8 @@ An optional space-separated list of poetry plugins to be installed before buildi
 An optional subdirectory path if poetry package doesn't reside in the main workflow directory
 
 
+**Note:** `ignore_dev_requirements` command is deprecated in version 2.0. Use `poetry_install_options: --without dev` instead
+
 ## Example usage
 
 The following will build and publish the python package to the PyPI using the last version of python and poetry. Specify the python package version and dependencies in `pyproject.toml` in the root directory of your project.
