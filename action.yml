@@ -23,10 +23,10 @@ inputs:
     description: "URL where the package will be uploaded"
     required: false
   repository_username:
-    description: "Username to log in into a repository where the package will be uploaded if using http-basic authentification instead of api token"
+    description: "Username to log in into a repository where the package will be uploaded if using http-basic authentication instead of api token"
     required: false
   repository_password:
-    description: "Password to log in into a repository where the package will be uploaded if using http-basic authentification instead of api token"
+    description: "Password to log in into a repository where the package will be uploaded if using http-basic authentication instead of api token"
     required: false
   build_format:
     description: 'The build format to be used, either "sdist" or "wheel"'
