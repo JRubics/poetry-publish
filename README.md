@@ -29,11 +29,11 @@ The URL where the package will be uploaded. Necessary if you'd like to upload to
 
 ### `repository_username`
 
-The Username to log in into a repository where the package will be uploaded if using http-basic authentification instead of api token.
+The Username to log in into a repository where the package will be uploaded if using http-basic authentication instead of api token.
 
 ### `repository_password`
 
-The Password to log in into a repository where the package will be uploaded if using http-basic authentification instead of api token.
+The Password to log in into a repository where the package will be uploaded if using http-basic authentication instead of api token.
 
 ### `build_format`
 
@@ -122,7 +122,7 @@ Repository can be changed to TestPyPI or a private wheels repo by specifying rep
     repository_url: "https://test.pypi.org/legacy/"
 ```
 
-Repository authentication can be changed to http-basic authentification by specifying repository_username and repository_password instead of pypi_token.
+Repository authentication can be changed to http-basic authentication by specifying repository_username and repository_password instead of pypi_token.
 
 ```yaml
 - name: Build and publish to private Python package repository
